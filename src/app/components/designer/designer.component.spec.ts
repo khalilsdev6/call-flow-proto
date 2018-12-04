@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CallFlowNodeComponent } from './call-flow-node.component';
+import { DesignerComponent } from './designer.component';
 
-describe('CallFlowNodeComponent', () => {
-  let component: CallFlowNodeComponent;
-  let fixture: ComponentFixture<CallFlowNodeComponent>;
+describe('DesignerComponent', () => {
+  let component: DesignerComponent;
+  let fixture: ComponentFixture<DesignerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CallFlowNodeComponent ]
+      declarations: [ DesignerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CallFlowNodeComponent);
+    fixture = TestBed.createComponent(DesignerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

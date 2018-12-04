@@ -2,14 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CallFlowComponent } from './call-flow/call-flow.component';
-import { CallFlowNodeComponent } from './call-flow/components/call-flow-node/call-flow-node.component';
+import { DesignerComponent } from './components/designer/designer.component';
+import { ToolboxComponent } from './components/toolbox/toolbox.component';
+import { ToolboxNodeComponent } from './components/toolbox-node/toolbox-node.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CallFlowComponent,
-    CallFlowNodeComponent
+    DesignerComponent,
+    ToolboxComponent,
+    ToolboxNodeComponent
   ],
   imports: [
     BrowserModule

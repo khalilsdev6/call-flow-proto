@@ -1,0 +1,37 @@
+.toolbox-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 120px;
+  margin-right: 3em;
+  .image-container {
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px #f5f5f6;
+    background-color: #ffffff;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+  .name {
+    padding-top: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #1f1f1f;
+    text-transform: uppercase;
+  }
+}

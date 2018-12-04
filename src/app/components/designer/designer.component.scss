@@ -1,0 +1,38 @@
+#designer {
+  display: flex;
+  height: 80%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.node circle {
+  /* fill: #999; */
+  fill: white;
+  stroke-width: 1px;
+  stroke: #c7ced9
+}
+
+.node text {
+  font: 12px sans-serif;
+  opacity: 0.8;
+  font-weight: bold
+}
+
+.node circle, .node image {
+  cursor: pointer;
+}
+
+.node--internal circle {
+  /* fill: #555; */
+}
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #c7ced9;
+  stroke-width: 1px;
+}

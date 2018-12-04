@@ -1,6 +1,14 @@
 
 import { NodeId } from '../interfaces/node-id';
 
+export enum NodeNames {
+  NUMBER = 'Number',
+  SOCIAL_MEDIA = 'Social Media',
+  DIAL_MENU = 'Dial Menu',
+  VOICEMAIL = 'Voicemail',
+  BUSINESS_HOURS = 'Business Hours'
+}
+
 export class Node {
 
   public name: string;
@@ -10,7 +18,7 @@ export class Node {
   public id: NodeId;
   public parentId: NodeId = null;
 
-  constructor (name: string, icon: string, subTreeTop?: Node[], subTreeBottom?: Node[], parentId?: NodeId) {
+  constructor (name: NodeNames | string, icon: string, subTreeTop?: Node[], subTreeBottom?: Node[], parentId?: NodeId) {
     this.name = name;
     this.icon = icon;
     this.subTreeTop = subTreeTop ? subTreeTop : [];
