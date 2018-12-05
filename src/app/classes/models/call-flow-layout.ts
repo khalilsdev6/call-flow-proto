@@ -13,6 +13,7 @@ export class CallFlowLayout {
   private nodeRadius = 25;
 
   private svg;
+  private zoom;
   private root;
   // TODO: Compute this dynamically
   private treeDepth = 5;
@@ -20,6 +21,7 @@ export class CallFlowLayout {
   private treeLayoutCreator: d3.ClusterLayout<any> = d3.cluster().size([this.height, this.width]);
 
   constructor () {
+    console.log(d3);
   }
 
   /**
@@ -31,11 +33,18 @@ export class CallFlowLayout {
 
   setupTree (rootElementSelector: string) {
     const { width, margin, height } = this;
+
+    // Setup zoom
+    this.zoom = d3.zoom()
+      .scaleExtent([1, 10])
+      .on("zoom", this.onZoomOrDrag.bind(this));
+
     this.svg = d3
       .select(rootElementSelector)
       .append('svg')
       .attr('width', width + margin.right + margin.left)
       .attr('height', height + margin.top + margin.bottom)
+      .call(this.zoom)
       // So it looks like we're going to add a g tag inside of the
       // svg.
       .append('g')
@@ -44,6 +53,12 @@ export class CallFlowLayout {
       // Also, the reference that the svg variable will be holding will be this
       // slightly transformed g element.
       .attr('transform', `translate(${margin.left},${margin.top})`);
+  }
+
+  private onZoomOrDrag () {
+    const { k, x, y } = d3.event.transform;
+    const {margin } = this;
+    this.svg.attr("transform", "translate(" + `${x + margin.left},${y + margin.top}` + ")scale(" + `${k}` + ")");
   }
 
   update (workflowData: any) {

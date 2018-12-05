@@ -1,0 +1,4 @@
+<button (click)="onClick()" class="workflow-button" [ngClass]="getClasses()">
+  <img *ngIf="image" src="{{image}}"/>
+  {{ this.text }}
+</button>

@@ -1,3 +1,32 @@
-<section id="designer">
-  
+<!-- 
+  The designer get bootstrapped by D3 inside of the #designer
+  section element.
+ -->
+<section id="designer"></section>
+<app-button 
+  class="designer-test-flow-button"
+  [image]="'assets/images/other/arrow-right.svg'"
+  [text]="'Test flow'"
+  [type]="'neutral'"
+  (handleClick)="testFlow()">
+</app-button>
+<section class="designer-bottom-panel-buttons-container">
+  <app-button 
+    (handleClick)="deleteFlow()"
+    [image]="'assets/images/other/remove.svg'" 
+    [text]="'Delete flow'" 
+    [type]="'neutral'">
+  </app-button>
+  <div>
+    <app-button 
+      (handleClick)="cancelFlowChanges()" 
+      [text]="'Cancel'" 
+      [type]="'neutral'">
+    </app-button>
+    <app-button 
+      (handleClick)="saveFlow()" 
+      [text]="'Save'" 
+      [type]="'submit'">
+    </app-button>
+  </div>
 </section>

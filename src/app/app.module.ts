@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { DesignerComponent } from './components/designer/designer.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
 import { ToolboxNodeComponent } from './components/toolbox-node/toolbox-node.component';
+import { ButtonComponent } from './shared/components/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DesignerComponent,
     ToolboxComponent,
-    ToolboxNodeComponent
+    ToolboxNodeComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule

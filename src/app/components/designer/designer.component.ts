@@ -53,15 +53,19 @@ export class DesignerComponent implements AfterContentInit, OnDestroy {
   }
 
   private saveFlow () {
+    console.log('Save flow clicked');
   }
 
   private cancelFlowChanges () {
+    console.log('Cancel flow clicked');
   }
 
   private deleteFlow () {
+    console.log('Delete flow clicked');
   }
 
   private testFlow () {
+    console.log('Test flow clicked');
   }
 
 }
