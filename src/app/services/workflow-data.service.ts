@@ -6,10 +6,10 @@ const testWorkflowData = [
     image: 'assets/images/call-flow-nodes/house-chimney.svg',
     children: [
       { name: '1 (410) 123-2244', parent: 'Main bakery',
-      image: 'assets/images/call-flow-nodes/house-chimney-1.svg',
+      image: 'assets/images/call-flow-nodes/dial-finger-1.svg',
       children: [
         { name: 'Hours', parent: '1 (410) 123-2244',
-        image: 'assets/images/call-flow-nodes/house-chimney.svg',
+        image: 'assets/images/call-flow-nodes/time-clock-circle.svg',
         children: [
           { name: 'Closed', parent: 'Hours',
             image: 'assets/images/call-flow-nodes/house-chimney.svg',

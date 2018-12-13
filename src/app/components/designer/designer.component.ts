@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, OnDestroy, ViewEncapsulation } fro
 import { WorkflowDataService } from '../../services/workflow-data.service';
 import { Subscription } from 'rxjs';
 import { CallFlowLayout } from '../../classes/models/call-flow-layout';
+import { D3Node } from '../../classes/interfaces/d3-node';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class DesignerComponent implements AfterContentInit, OnDestroy {
   private workflowDataSubscription: Subscription;
   private callFlowLayout: CallFlowLayout = new CallFlowLayout();
 
-  constructor(private workflow: WorkflowDataService) {
+  constructor (private workflow: WorkflowDataService) {
     this.workflowDataService = workflow;
   }
 
@@ -23,6 +24,12 @@ export class DesignerComponent implements AfterContentInit, OnDestroy {
     this.workflowDataSubscription = this.workflowDataService.workflowData.subscribe(
       (workflowData: any) => {
         this.callFlowLayout.update(workflowData);
+      }
+    );
+
+    this.callFlowLayout.onNodeClicked.subscribe(
+      (node: D3Node) => {
+        console.log('Node was clicked, we should open the edit modal for ===>', node);
       }
     );
   }

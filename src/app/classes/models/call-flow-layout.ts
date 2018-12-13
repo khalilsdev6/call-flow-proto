@@ -1,15 +1,26 @@
 
 import * as d3 from 'd3';
+import { EventEmitter } from '@angular/core';
+import { D3Node } from '../interfaces/d3-node';
+
+/**
+ * @class CallFlowLayout
+ * @desc The call flow layout class is the D3 visualization of
+ * the current call flow data. It's solely a presentation layer
+ * class.
+ *
+ * We can bind
+ */
 export class CallFlowLayout {
   private margin = {
-    top: 20,
-    right: 120,
-    bottom: 20,
-    left: 120
+    top: 20 + 150,
+    right: 120 + 300,
+    bottom: 20 + 150,
+    left: 120 + 300
   };
 
-  private width = 900 - this.margin.right - this.margin.left;
-  private height = 300 - this.margin.top - this.margin.bottom;
+  private width = 1500 - this.margin.right - this.margin.left;
+  private height = 600 - this.margin.top - this.margin.bottom;
   private nodeRadius = 25;
 
   private svg;
@@ -19,6 +30,8 @@ export class CallFlowLayout {
   private treeDepth = 5;
   // Creates a tree layout of our datum
   private treeLayoutCreator: d3.ClusterLayout<any> = d3.cluster().size([this.height, this.width]);
+
+  public onNodeClicked: EventEmitter<D3Node> = new EventEmitter();
 
   constructor () {
     console.log(d3);
@@ -105,7 +118,14 @@ export class CallFlowLayout {
     // tree layout.
     .attr("transform", function(d) {
       return "translate(" + d.y + "," + d.x + ")";
-    });
+    })
+    // Then we can hook up event listeners to do respond to
+    // dom events.
+    .on("click", (d: D3Node) => {
+      this.onNodeClicked.emit(d);
+     })
+    .on("mouseover", (d: D3Node) => { console.log("Hovered over node", d); })
+    .on("mouseleave", (d: D3Node) => { console.log("Left hover over node", d); });
 
     // ============================
     // 2. Add the circle to the node group
@@ -114,12 +134,7 @@ export class CallFlowLayout {
     node.append("circle")
     // We'll make the radius 20 px, so it should be
     // 40 px wide overall.
-    .attr("r", this.nodeRadius)
-    // Then we can hook up event listeners to do respond to
-    // dom events.
-    .on("click", d => { console.log(d, "clicked"); })
-    .on("mouseover", d => { console.log("hovering over item"); })
-    .on("mouseleave", () => { console.log("mouse leave"); });
+    .attr("r", this.nodeRadius);
 
     // ==============================
     // 3. Add the text to the node group
@@ -179,7 +194,9 @@ export class CallFlowLayout {
       .attr('class', 'link')
       // On the path, give it the data needed to actually draw
       // that path.
-      .attr('d', this.drawLinkPath);
+      .attr('d', this.drawLinkPath)
+      .on("mouseover", (d) => { console.log("Hovered over link", d); })
+      .on("mouseleave", (d) => { console.log("Left hovering over link", d); });
   }
 
   /**
